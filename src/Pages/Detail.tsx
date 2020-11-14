@@ -11,7 +11,6 @@ interface ParamTypes {
 const Detail = () => {
   let { countryName } = useParams<ParamTypes>();
   let location = useLocation();
-  console.log(location);
 
   const [country, setCountry] = useState<any>([]);
 
