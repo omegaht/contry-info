@@ -11,7 +11,11 @@ class Api {
 
   private api;
 
-  getAllCountrys = () => this.api.get("all");
+  getAllCountries = () => this.api.get("all");
+
+  getCountriesByRegion = (region: string) => this.api.get(`region/${region}`);
+
+  getCountryByName = (countryName: string) => this.api.get(`name/${countryName}`);
 }
 
 export default new Api();

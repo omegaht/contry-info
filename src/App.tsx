@@ -1,26 +1,24 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import "antd/dist/antd.css";
 
-function App() {
+import { Layout } from "antd";
+import CustomTitle from "Components/CustomTitle/CustomTitle";
+import React from "react";
+
+import Routes from "./Routes";
+
+const { Header, Content } = Layout;
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Layout>
+      <Header>
+        <CustomTitle>Where in the world ?</CustomTitle>
+      </Header>
+      <Content>
+        <Routes />
+      </Content>
+    </Layout>
   );
-}
+};
 
 export default App;

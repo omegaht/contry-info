@@ -1,2 +1,2 @@
-export const MAIN = "/main";
+export const MAIN = "/";
 export const DETAIL = "/detail";
