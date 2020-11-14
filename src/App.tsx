@@ -6,17 +6,18 @@ import React from "react";
 
 import Routes from "./Routes";
 
-const { Header, Content } = Layout;
+const { Header, Content, Footer } = Layout;
 
 const App = () => {
   return (
     <Layout>
-      <Header>
-        <CustomTitle>Where in the world ?</CustomTitle>
+      <Header style={{ backgroundColor: "white" }}>
+        <CustomTitle level={2}>Where in the world ?</CustomTitle>
       </Header>
-      <Content>
+      <Content style={{ height: "100vh" }}>
         <Routes />
       </Content>
+      <Footer>Made by omegaht</Footer>
     </Layout>
   );
 };

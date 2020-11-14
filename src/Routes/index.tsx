@@ -11,7 +11,7 @@ const Routes = () => {
       <Switch>
         <Route exact path={ROUTES.MAIN} component={Main} />
         <Route exact path={`${ROUTES.DETAIL}/:countryName`} component={Detail} />
-        {/* <Route  path="*" component={Main} /> */}
+        <Route exact path={`${ROUTES.BORDER}/:countryName`} component={Detail} />
       </Switch>
     </BrowserRouter>
   );

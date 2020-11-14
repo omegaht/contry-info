@@ -16,6 +16,8 @@ class Api {
   getCountriesByRegion = (region: string) => this.api.get(`region/${region}`);
 
   getCountryByName = (countryName: string) => this.api.get(`name/${countryName}`);
+
+  getCountryByCode = (countryCode: string) => this.api.get(`alpha/${countryCode}`);
 }
 
 export default new Api();

@@ -2,7 +2,7 @@ import { Col, Row, Spin } from "antd";
 import Api from "Api";
 import CountryDetail from "Components/CountryDetail/CountryDetail";
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useLocation } from "react-router-dom";
 
 interface ParamTypes {
   countryName: string;
@@ -10,16 +10,23 @@ interface ParamTypes {
 
 const Detail = () => {
   let { countryName } = useParams<ParamTypes>();
+  let location = useLocation();
+  console.log(location);
 
   const [country, setCountry] = useState<any>([]);
 
   useEffect(() => {
-    const fetchCountryByName = async () => {
-      const country = await Api.getCountryByName(countryName);
+    const fetchCountry = async () => {
+      let country;
+      if (!location.pathname.includes("border")) {
+        country = await Api.getCountryByName(countryName);
+      } else {
+        country = [await Api.getCountryByCode(countryName)];
+      }
       setCountry(country);
     };
     try {
-      fetchCountryByName();
+      fetchCountry();
     } catch (error) {
       alert(error);
     }
@@ -28,7 +35,22 @@ const Detail = () => {
   return (
     <Row>
       <Col offset={2} xs={22} sm={22} md={20}>
-        <>{country.length === 0 ? <Spin size="large" /> : <CountryDetail country={country} />}</>
+        <>
+          {country.length === 0 ? (
+            <Spin
+              size="large"
+              style={{
+                position: "absolute",
+                margin: "50px auto 0 auto",
+                left: 0,
+                right: 0,
+                textAlign: "center",
+              }}
+            />
+          ) : (
+            <CountryDetail country={country} />
+          )}
+        </>
       </Col>
     </Row>
   );
